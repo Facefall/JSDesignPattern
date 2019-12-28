@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta name="viewpoint" content="width-device-width,initial-scale-1.0">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <script>
+        //现在已经有不同的工厂做披萨
+        //但是想要增加一些质量控制
+
+        let NYStore = new NYPizzaStore();
+        NYStore.orderPizza("cheese");
+
+        class PizzaStore{
+            CreatePizza(type);
+            orderPizza(type){
+                let pizza;
+                pizza = this.CreatePizza(type);
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+                return pizza;
+            }
+        }
+
+        //decouple
+        class NYPizzaStore extends PizzaStore{
+            CreatePizza(type){
+                let pizza = null;
+                if (type === "cheese"){
+                    pizza = new NYStyleCheesePizza();
+                }
+                else if (type === "greek"){
+                    pizza = new NYStyleGreekPizza();
+                }
+                else if (type === "pepperoni"){
+                    pizza = new NYStylePepperoni();
+                }
+                return pizza;
+            }
+        }
+
+
+        class ChicagoPizzaStore extends PizzaStore{
+            CreatePizza(type) {
+
+            }
+        }
+
+        class Pizza{
+            prepare();
+            bake();
+            cut();
+            box();
+        }
+        class NYStyleCheesePizza extends Pizza{
+            prepare() {
+                //self prepare
+                super.prepare();
+            }
+            bake() {
+                //self bake
+                super.bake();
+            }
+            cut() {
+                //self cut
+                //super.cut();
+            }
+            box() {
+                //self box
+                //super.box();
+            }
+        }
+        class NYStyleGreekPizza extends Pizza{
+            prepare() {
+                //self prepare
+                super.prepare();
+            }
+            bake() {
+                //self bake
+                super.bake();
+            }
+            cut() {
+                //self cut
+                //super.cut();
+            }
+            box() {
+                //self box
+                //super.box();
+            }
+        }
+        class NYStylePepperoni extends Pizza{
+            prepare() {
+                //self prepare
+                super.prepare();
+            }
+            bake() {
+                //self bake
+                super.bake();
+            }
+            cut() {
+                //self cut
+                //super.cut();
+            }
+            box() {
+                //self box
+                //super.box();
+            }
+        }
+
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta name="viewpoint" content="width-device-width,initial-scale-1.0">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <script>
+
+        class Pizza{
+            prepare(){
+
+            }
+            bake(){
+
+            }
+            cut(){
+
+            }
+            box(){
+
+            }
+        }
+
+        //披萨菜单随时都可能有新品加入,或者删除一些菜品
+        //所以随时间过去,披萨菜单肯定会改变,而且是一改再改
+
+        //new 也就是实例化这个行为,不应该总是公开的进行
+        function orderPizza(type) {
+            let pizza = new Pizza();
+            if (type === "cheese"){
+                pizza = new CheesePizza();
+            }
+            else if (type === "greek"){
+                pizza = new GreekPizza();
+            }
+            else if (type === "pepperoni"){
+                pizza = new Pepperoni();
+            }
+            pizza.prepare();
+            pizza.bake();
+            pizza.cut();
+            pizza.box();
+        }
+
+        class CheesePizza{
+
+        }
+        class GreekPizza{
+
+        }
+        class Pepperoni{
+
+        }
+
+
+    </script>
+    </body>
+</html>

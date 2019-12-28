@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta name="viewpoint" content="width-device-width,initial-scale-1.0">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <script>
+        class SimplePizzaFactory{
+            CreatePizza(type){
+                let pizza = null;
+                if (type === "cheese"){
+                    pizza = new CheesePizza();
+                }
+                else if (type === "greek"){
+                    pizza = new GreekPizza();
+                }
+                else if (type === "pepperoni"){
+                    pizza = new Pepperoni();
+                }
+                return pizza;
+            }
+        }
+
+
+        class PizzaStore{
+            factory ;
+            constructor(factory) {
+                this.factory = factory;
+
+            }
+            //把new 操作符放到了factory.CreatePizza里
+            orderPizza(type){
+                let pizza;
+                pizza = this.factory.CreatePizza(type);
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+                return pizza;
+            }
+            prepare(){
+
+            }
+            bake(){
+
+            }
+            cut(){
+
+            }
+            box(){
+
+            }
+
+
+        }
+
+        class CheesePizza{
+
+        }
+        class GreekPizza{
+
+        }
+        class Pepperoni{
+
+        }
+
+
+    </script>
+    </body>
+</html>

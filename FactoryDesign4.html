@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta name="viewpoint" content="width-device-width,initial-scale-1.0">
+        <meta http-equiv="x-ua-compatible" content="ie-edge">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <script>
+        let nyPizzaFactory = new NYPizzaFactory();
+        let nyPizzaStore = new PizzaStore(nyPizzaFactory);
+        nyPizzaStore.orderPizza("pepperoni");
+
+        let chicagoFactory = new ChicagoPizzaFactory();
+        let chicagoPizzaStore = new PizzaStore(chicagoFactory);
+        chicagoPizzaStore.orderPizza("greek");
+
+
+        class SimplePizzaFactory{
+            CreatePizza(type){
+                let pizza = null;
+                if (type === "cheese"){
+                    pizza = new CheesePizza();
+                }
+                else if (type === "greek"){
+                    pizza = new GreekPizza();
+                }
+                else if (type === "pepperoni"){
+                    pizza = new Pepperoni();
+                }
+                return pizza;
+            }
+        }
+
+        //工厂 制造纽约风味的披萨
+        class NYPizzaFactory {
+            CreatePizza(type){
+                let pizza = null;
+                if (type === "cheese") {
+                    pizza = new CheesePizza();
+                }
+                else if (type === "pepperoni"){
+                    pizza = new Pepperoni();
+                }
+                return pizza;
+            }
+        }
+
+        //工厂 制造芝加哥风味的披萨
+        class ChicagoPizzaFactory{
+            CreatePizza(type){
+                let pizza = null;
+                if (type === "cheese"){
+                    pizza = new CheesePizza();
+                }
+                else if (type === "greek"){
+                    pizza = new GreekPizza();
+                }
+                return pizza;
+            }
+        }
+
+        class PizzaStore{
+            factory;
+            constructor(factory) {
+                this.factory = factory;
+
+            }
+            //把new 操作符放到了factory.CreatePizza里
+            orderPizza(type){
+                let pizza;
+                pizza = this.factory.CreatePizza(type);
+                pizza.prepare();
+                pizza.bake();
+                pizza.cut();
+                pizza.box();
+                return pizza;
+            }
+        }
+
+        class Pizza{
+            prepare();
+            bake();
+            cut();
+            box();
+        }
+        class CheesePizza extends Pizza{
+            prepare() {
+                //self prepare
+                super.prepare();
+            }
+            bake() {
+                //self bake
+                super.bake();
+            }
+            cut() {
+                //self cut
+                //super.cut();
+            }
+            box() {
+                //self box
+                //super.box();
+            }
+        }
+        class GreekPizza extends Pizza{
+            prepare() {
+                //self prepare
+                super.prepare();
+            }
+            bake() {
+                //self bake
+                super.bake();
+            }
+            cut() {
+                //self cut
+                //super.cut();
+            }
+            box() {
+                //self box
+                //super.box();
+            }
+        }
+        class Pepperoni extends Pizza{
+            prepare() {
+                //self prepare
+                super.prepare();
+            }
+            bake() {
+                //self bake
+                super.bake();
+            }
+            cut() {
+                //self cut
+                //super.cut();
+            }
+            box() {
+                //self box
+                //super.box();
+            }
+        }
+
+
+    </script>
+    </body>
+</html>
